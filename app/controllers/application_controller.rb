@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
+    logger.debug("NGUYEN, user_id: #{:user_id}, session[user_id]: #{session[:user_id]}")
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
