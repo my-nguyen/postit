@@ -6,18 +6,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:notice] = "Welcome, you've logged in."
       sign_in(@user)
-      logger.debug("NGUYEN: save() successful!")
-      redirect_to root_url
+      redirect_to user_path(@user.id)
     else
-      logger.debug("NGUYEN: save() failed!")
       render "new"
     end
   end
 
   def index
     @users = User.all
+  end
+
+  def show
+    @user = User.find_by(username: params[:id])
+    if @user
+      @posts = @user.posts
+    else
+      render file: 'public/500.html'
+    end
   end
 
   private

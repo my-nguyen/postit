@@ -1,0 +1,40 @@
+<div id="main">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <p class="lead">All Posts</p>
+        <hr></hr>
+        <p></p>
+        <div class="row">
+          <div class="span0 well text-center">
+            <%= link_to %>
+            <br></br>
+            <span><%= "votes" %></span>
+            <br></br>
+            <%= link_to %>
+          </div>
+          <div class="span8 well">
+            <span class="badge">
+              <%= link_to "/categories/programming" %>
+            </span>
+            <span class="badge">
+              <%= link_to "/categories/education" %>
+            </span>
+            <h4><%= link_to "Tealeaf Academy", "http://www.gotealeaf.com" %></h4>
+            <p>This is a great place to learn web development!</p>
+            <p>
+              <span class="quiet">posted by</span>
+              <%= link_to "Chris", "/users/chris" %>
+              <small>at <%= %></small>
+            </p>
+            <small>
+              <span>
+                <%= link_to "75 comments", "/posts/tealeaf-academy" %>
+              </span>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

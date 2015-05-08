@@ -1,1 +1,33 @@
-<h1>Posts#new</h1>
+<p>Create a new post</p>
+<hr></hr>
+<p></p>
+<div>
+  <%= form_for @post do |f| %>
+    <div>
+      <%= f.label :title %><br/>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <%= f.label :url %><br/>
+      <%= f.text_field :url %>
+    </div>
+    <div>
+      <%= f.label :description %><br/>
+      <%= f.text_area :description %>
+    </div>
+    <div>
+      <%= f.label :categories %><br/>
+      <%= f.check_box :cat_news %>
+      <%= f.label :news %>
+      <%= f.check_box :cat_programming %>
+      <%= f.label :programming %>
+      <%= f.check_box :cat_education %>
+      <%= f.label :education %>
+      <%= f.check_box :cat_sports %>
+      <%= f.label :sports %>
+      <%= f.check_box :cat_humor %>
+      <%= f.label :humor %>
+    </div>
+  <%= f.submit %>
+  <% end %>
+</div>

@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   has_many :posts
 
+  def to_param
+    self.username
+  end
+
   def username=(value)
     value = value.strip.downcase
     write_attribute(:username, value)
