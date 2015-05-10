@@ -18,4 +18,7 @@
     <%= link_to "Comments (0)", "/users/iceguyvn?tab=comments" %>
   </li>
 </ul>
-<%= render 'shared/row' %>
+
+<% @posts.each do |post| %>
+  <%= render partial: 'shared/post', locals: {post: post} %>
+<% end %>

@@ -17,14 +17,14 @@ ActiveRecord::Schema.define(version: 20150502000009) do
     t.string   "title"
     t.string   "url"
     t.text     "description"
-    t.boolean  "cat_news"
-    t.boolean  "cat_programming"
-    t.boolean  "cat_education"
-    t.boolean  "cat_sports"
-    t.boolean  "cat_humor"
+    t.boolean  "news"
+    t.boolean  "programming"
+    t.boolean  "education"
+    t.boolean  "sports"
+    t.boolean  "humor"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"

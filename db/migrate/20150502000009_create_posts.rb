@@ -4,11 +4,11 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.string :url
       t.text :description
-      t.boolean :cat_news
-      t.boolean :cat_programming
-      t.boolean :cat_education
-      t.boolean :cat_sports
-      t.boolean :cat_humor
+      t.boolean :news
+      t.boolean :programming
+      t.boolean :education
+      t.boolean :sports
+      t.boolean :humor
       t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
