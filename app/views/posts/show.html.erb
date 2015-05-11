@@ -1,0 +1,19 @@
+<p class="pull-right">
+  [<%= link_to "edit this post", edit_post_path %>]
+</p>
+
+<%= render partial: 'shared/badge', locals: {post: @post} %>
+
+<p class="lead"><%= @post.title %></p>
+<hr></hr>
+<p><%= @post.description %></p>
+<hr></hr>
+
+<%= form_for @comment do |f| %>
+  <div style="margin:0; padding: 0; display: inline"></div>
+  <div class="control-group">
+    <%= f.label "Leave a comment" %><br/>
+    <%= f.text_area :body, id: "comment_body", class: "span4", rows: "3" %>
+  </div>
+  <%= f.submit "Create comment" %>
+<% end %>

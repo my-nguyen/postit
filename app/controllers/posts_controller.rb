@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.slug = @post.title.downcase.gsub(" ", "-")
     if @post.save
       flash[:success] = "Your post was created!"
       redirect_to posts_path
@@ -18,10 +19,18 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(title: params[:id])
+    @post = Post.find_by_slug(params[:id])
+    @comment = @post.comments.build
   end
 
   def destroy
+  end
+
+  def vote
+    render params
+    increase = up ? 1 : -1
+    @post = Post.find_by_slug(params[:id])
+    @post.votes += increase
   end
 
   private

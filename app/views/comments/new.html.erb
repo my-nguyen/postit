@@ -1,0 +1,9 @@
+<%= render 'shared/badge' %>
+<%= form_for @comment do |f| %>
+  <div style="margin:0; padding: 0; display: inline"></div>
+  <div class="control-group">
+    <%= f.label "Leave a comment" %>
+    <%= f.body id="comment_body" class="span4" rows="3" %>
+  </div>
+  <%= f.submit "Create comment" %>
+<% end %>

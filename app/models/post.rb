@@ -1,12 +1,9 @@
 class Post < ActiveRecord::Base
   belongs_to :user
-  before_save :slug
+  has_many :comments, dependent: :destroy
+  validates :title, uniqueness: true
 
   def to_param
-    self.title
-  end
-
-  def slug
-    title.downcase.gsub(" ", "-")
+    slug
   end
 end

@@ -1,25 +1,31 @@
 <div class="row">
   <div class="span0 well text-center">
-    <a rel="nofollow" href="/posts/tealeaf-academy/vote?vote=true" data-remote="true" data-method="post">
+    <%= link_to("#{post_path(post.slug)}/vote?vote=true", rel: "nofollow", remote: true, method: :post) do %>
       <span class="glyphicon glyphicon-arrow-up"></span>
-    </a>
+    <% end %>
     </br>
     <span><%= "votes" %></span>
     </br>
-    <a rel="nofollow" href="/posts/tealeaf-academy/vote?vote=false" data-remote="true" data-method="post">
+    <%= link_to("#{post_path(post.slug)}/vote?vote=false", rel: "nofollow", remote: true, method: :post) do %>
       <span class="glyphicon glyphicon-arrow-down"></span>
-    </a>
+    <% end %>
   </div>
 
   <div class="span8 well">
-    <span class="badge">
-      <%= link_to "/categories/programming" %>
-    </span>
-    <span class="badge">
-      <%= link_to "/categories/education" %>
-    </span>
-    <h4><%= link_to post.title, post.url %></h4>
+    <p>
+      <% categories = %w(news programming education sports humor) %>
+      <% categories.each do |category| %>
+        <% if eval("post.#{category}") %>
+          <span class="badge">
+            <%= link_to category.capitalize, "/categories/#{category}" %>
+          </span>
+        <% end %>
+      <% end %>
+    </p>
+
+    <h4><%= link_to post.title, full_url(post.url) %></h4>
     <p><%= post.description %></p>
+
     <p>
       <span class="quiet">posted by</span>
       <%= link_to "iceguyvn", "/users/iceguyvn" %>
@@ -27,7 +33,7 @@
     </p>
     <small>
       <span>
-        <%= link_to "75 comments", "/posts/tealeaf-academy" %>
+        <%= link_to "#{post.comments.count} comments", post_path(post.slug) %>
       </span>
     </small>
   </div>
