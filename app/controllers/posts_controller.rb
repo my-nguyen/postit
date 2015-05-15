@@ -27,10 +27,15 @@ class PostsController < ApplicationController
   end
 
   def vote
-    render params
-    increase = up ? 1 : -1
     @post = Post.find_by_slug(params[:id])
-    @post.votes += increase
+    if @post
+      if params[:vote] == "true"
+        @post.post_votes.create
+      else
+        @post.post_votes.last.destroy
+      end
+    end
+    redirect_to(posts_path)
   end
 
   private
