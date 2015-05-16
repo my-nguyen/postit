@@ -27,12 +27,18 @@ class PostsController < ApplicationController
   end
 
   def vote
+    # render plain: params.inspect
+    # Pretty URL enforced; so must look up Post by slug instead of by id
     @post = Post.find_by_slug(params[:id])
     if @post
-      if params[:vote] == "true"
-        @post.post_votes.create
-      else
-        @post.post_votes.last.destroy
+      # Attempt to create a new vote that's linked to the current post and
+      # current user
+      vote = @post.post_votes.build(user_id: current_user.id)
+      if vote.save
+        # Increase or decreate the vote count accordingly. Note the param value
+        # is passed as a string ("true" or "false") and not as a bool
+        @post.vote_count += (params[:vote] == "true" ? 1 : -1)
+        @post.save
       end
     end
     redirect_to(posts_path)
