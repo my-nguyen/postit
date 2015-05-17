@@ -1,0 +1,11 @@
+<div class="span0 well text-center">
+  <%= link_to("#{post_path(post.slug)}/vote?vote=true", rel: "nofollow", remote: true, method: :post) do %>
+    <span class="glyphicon glyphicon-arrow-up"></span>
+  <% end %>
+  </br>
+  <span><%= "#{post.vote_count} votes" %></span>
+  </br>
+  <%= link_to("#{post_path(post.slug)}/vote?vote=false", rel: "nofollow", remote: true, method: :post) do %>
+    <span class="glyphicon glyphicon-arrow-down"></span>
+  <% end %>
+</div>

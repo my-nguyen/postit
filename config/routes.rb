@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'categories/news'
+
+  get 'categories/programming'
+
+  get 'categories/education'
+
+  get 'categories/sports'
+
+  get 'categories/humor'
+
   root "posts#index"
   resources :users
   get 'register' => 'users#new'
@@ -9,6 +19,12 @@ Rails.application.routes.draw do
   resources :posts do
     member do
       post 'vote'
+    end
+
+    resources :comments do
+      member do
+        post 'vote'
+      end
     end
   end
   resources :comments, only: [:create, :destroy]

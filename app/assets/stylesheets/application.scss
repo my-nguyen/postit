@@ -1,15 +1,46 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.nav {
-  width: 71px;
-  height: 40px;
-  font-size: large;
+.navbar .nav {
+  position: relative;
+  left: 0px;
+  display: block;
+  float: left;
+  margin: 0px 10px 0px 0px;
+}
+
+.navbar-inner {
+  min-height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #F9F9F9;
+  background-image: linear-gradient(to bottom, #FFF, #F2F2F2);
+  background-repeat: repeat-x;
+  border: 1px solid #D4D4D4;
+  border-radius: 4px;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.067);
+}
+
+.navbar .btn, .navbar .btn-group {
+  margin-top: 5px;
+}
+
+div.nav_item {
+  margin-left: 25px;
   float: left;
 }
 
-.nav_item {
-  float: left;
+.navbar .brand {
+  display: block;
+  margin-left: -20px;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.container {
+  width: auto;
+  margin-left: 135px;
+  margin-right: auto;
 }
 
 .span0 {
@@ -18,15 +49,21 @@
   float: left;
 }
 
-#comment_body {
-  width: 300px;
-  height: 70px;
+.span8 {
+  width: 620px;
+  float: left;
+  margin-left: 20px
 }
 
-.badge {
-  color: white;
-}
-
-.row {
-  width: 960px;
+.label, .badge {
+  display: inline-block;
+  padding: 2px 4px;
+  font-size: 11.844px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #FFF;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+  background-color: #999;
 }

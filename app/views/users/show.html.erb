@@ -20,5 +20,5 @@
 </ul>
 
 <% @posts.each do |post| %>
-  <%= render partial: 'shared/post', locals: {post: post} %>
+  <%= render 'shared/post', post: post %>
 <% end %>

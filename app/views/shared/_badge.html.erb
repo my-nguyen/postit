@@ -1,27 +1,10 @@
 <p>
-  <% if post.news %>
-    <span class="badge">
-      <%= link_to "News", "/categories/news" %>
-    </span>
-  <% end %>
-  <% if post.programming %>
-    <span class="badge">
-      <%= link_to "Programming", "/categories/programming" %>
-    </span>
-  <% end %>
-  <% if post.education %>
-    <span class="badge">
-      <%= link_to "Education", "/categories/education" %>
-    </span>
-  <% end %>
-  <% if post.sports %>
-    <span class="badge">
-      <%= link_to "Sports", "/categories/sports" %>
-    </span>
-  <% end %>
-  <% if post.humor %>
-    <span class="badge">
-      <%= link_to "Humor", "/categories/humor" %>
-    </span>
+  <% categories = %w(news programming education sports humor) %>
+  <% categories.each do |category| %>
+    <% if eval("post.#{category}") %>
+      <span class="badge">
+        <%= link_to category.capitalize, "/categories/#{category}" %>
+      </span>
+    <% end %>
   <% end %>
 </p>

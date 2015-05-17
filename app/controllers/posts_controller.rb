@@ -21,6 +21,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_slug(params[:id])
     @comment = @post.comments.build
+    # Save the id/slug of the Post, so the Post can be retrieved later from
+    # inside a Comment
+    session[:post_id] = params[:id]
   end
 
   def destroy

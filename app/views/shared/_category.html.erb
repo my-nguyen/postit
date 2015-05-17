@@ -2,7 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="span12">
-        <p class="lead">All Posts</p>
+        <p class="lead">
+          <%= link_to "All Posts", posts_path %>
+          <%= ">> #{category}" %>
+        </p>
         <hr></hr>
         <p></p>
         <% @posts.each do |p| %>
