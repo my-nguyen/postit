@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
   end
 
   private
+  # Utility method used by all the actions in this controller
   def query(column)
     @posts = Post.where("#{column} = 't'")
   end

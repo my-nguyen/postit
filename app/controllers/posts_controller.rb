@@ -4,9 +4,12 @@ class PostsController < ApplicationController
   end
 
   def create
+    # Create a new Post
     @post = current_user.posts.build(post_params)
+    # Make sure to generate a slug as well
     @post.slug = @post.title.downcase.gsub(" ", "-")
     if @post.save
+      # If save was sucessful, then redirect to the Post#index view
       flash[:success] = "Your post was created!"
       redirect_to posts_path
     else
@@ -19,6 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    # Find by slug and not by id
     @post = Post.find_by_slug(params[:id])
     @comment = @post.comments.build
     # Save the id/slug of the Post, so the Post can be retrieved later from
@@ -30,7 +34,6 @@ class PostsController < ApplicationController
   end
 
   def vote
-    # render plain: params.inspect
     # Pretty URL enforced; so must look up Post by slug instead of by id
     @post = Post.find_by_slug(params[:id])
     if @post

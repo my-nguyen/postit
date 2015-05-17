@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
+      # redirect to username instead of id, due to pretty URL
       redirect_to user_path(@user.username)
     else
       render "new"
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Find by username instead of id, due to pretty URL
     @user = User.find_by_username(params[:id])
     if @user
       @posts = @user.posts

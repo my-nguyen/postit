@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   has_many :posts
 
+  # required by pretty URL
   def to_param
-    self.username
+    username
   end
 
   def username=(value)
