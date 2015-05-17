@@ -1,14 +1,1 @@
-<div id="main">
-  <div class="container">
-    <div class="row">
-      <div class="span12">
-        <p class="lead">All Posts</p>
-        <hr></hr>
-        <p></p>
-        <% @posts.each do |p| %>
-          <%= render 'shared/post', post: p %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'shared/category' %>

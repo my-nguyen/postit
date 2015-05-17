@@ -3,8 +3,12 @@
     <div class="row">
       <div class="span12">
         <p class="lead">
-          <%= link_to "All Posts", posts_path %>
-          <%= ">> #{category}" %>
+          <% if defined?(category) %>
+            <%= link_to "All Posts", posts_path %>
+            <%= ">> #{category}" %>
+          <% else %>
+            <%= "All Posts" %>
+          <% end %>
         </p>
         <hr></hr>
         <p></p>
