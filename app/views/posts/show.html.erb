@@ -31,6 +31,7 @@
 
         <h5>Comments:</h5>
 
+<% logger.debug("NGUYEN: #{@post.comments.count} comments") %>
         <% @post.comments.each do |comment| %>
           <%= render 'shared/comment', comment: comment %>
         <% end %>

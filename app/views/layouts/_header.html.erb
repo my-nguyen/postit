@@ -5,31 +5,34 @@
         <ul class="nav">
           <li><%= link_to "Postit!", root_path, class: "brand" %></li>
         </ul>
+
         <div class="btn-group nav_item">
           <a class="btn btn-small dropdown-toggle" href="#" data-toggle="dropdown">
             Categories
             <span class="caret"></span>
           </a>
+
           <ul class="dropdown-menu">
-            <li><%= link_to "News", "/categories/news" %></li>
-            <li><%= link_to "Programming", "/categories/programming" %></li>
-            <li><%= link_to "Education", "/categories/education" %></li>
-            <li><%= link_to "Sports", "/categories/sports" %></li>
-            <li><%= link_to "Humor", "/categories/humor" %></li>
+            <% categories = %w(news programming education sports humor) %>
+            <% categories.each do |category| %>
+              <li><%= link_to category.capitalize, "/categories/#{category}" %></li>
+            <% end %>
           </ul>
         </div>
         <% if current_user %>
           <div class="nav_item">
             <%= link_to "New Post", new_post_path, class: "btn btn-success btn-small" %>
           </div>
+
           <div class="btn-group nav_item">
             <%= link_to "", class: "btn btn-small dropdown-toggle", data: {toggle: "dropdown"} do %>
               <%= current_user.username %>
               <span class="caret"></span>
             <% end %>
+
             <ul class="dropdown-menu">
-              <li><%= link_to "edit profile", "/users/iceguyvn/edit" %></li>
-              <li><%= link_to "view profile", "/users/iceguyvn" %></li>
+              <li><%= link_to "edit profile", edit_user_path(current_user) %></li>
+              <li><%= link_to "view profile", user_path(current_user) %></li>
               <li><%= link_to "logout", "/logout" %></li>
             </ul>
           </div>
@@ -37,6 +40,7 @@
           <div class="nav_item">
             <%= link_to "Register", new_user_path, class: "btn btn-success btn-small" %>
           </div>
+
           <div class="nav_item">
             <%= link_to "Log in", login_path, class: "btn btn-small" %>
           </div>

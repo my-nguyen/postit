@@ -1,0 +1,19 @@
+<div class="span0 well text-center">
+  <%# link_to post_comment_path(current_post.slug, comment.id) %>
+  <%-# <%= link_to("test", "#{post_comment_path(current_post.slug, comment.id)}") %> -%>
+  <% if false %>
+    <%= link_to("#{vote_post_comment_path(current_post.slug, comment.id)}?vote=true", rel: "nofollow", remote: true, method: :post) do %>
+      <span class="glyphicon glyphicon-arrow-up"></span>
+    <% end %>
+  <% end %>
+
+  </br>
+  <span><%= "#{comment.vote_count} votes" %></span>
+  </br>
+
+  <% if false %>
+    <%= link_to("#{vote_post_comment_path(comment)}/vote?vote=false", rel: "nofollow", remote: true, method: :post) do %>
+      <span class="glyphicon glyphicon-arrow-down"></span>
+    <% end %>
+  <% end %>
+</div>

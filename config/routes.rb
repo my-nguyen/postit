@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
   get 'categories/news'
-
   get 'categories/programming'
-
   get 'categories/education'
-
   get 'categories/sports'
-
   get 'categories/humor'
 
   root "posts#index"
   resources :users
+
   get 'register' => 'users#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
+
   resources :sessions, only: [:create]
   resources :posts do
     member do
@@ -27,6 +25,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   resources :comments, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,10 @@
+<div class="span0 well text-center">
+  <% logger.debug("NGUYEN path: #{post_path(current_post.slug)}") %>
+  <%= link_to post_path(current_post.slug) %>
+  <% logger.debug("NGUYEN comment-id: #{comment.id}, path: #{post_comment_path(current_post.slug, comment.id)}") %>
+  <%= link_to post_comment_path(current_post.slug, comment.id) %>
+
+  </br>
+  <span><%= "#{comment.vote_count} votes" %></span>
+  </br>
+</div>

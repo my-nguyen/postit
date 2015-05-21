@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :username, uniqueness: true
   has_many :posts
+  has_many :comments
 
   # required by pretty URL
   def to_param
