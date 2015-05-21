@@ -20,7 +20,13 @@
         <p><%= @post.description %></p>
         <hr></hr>
 
-        <%= form_for @comment do |f| %>
+        <%-# The Comment entity for the form is empty, standalone, and -%>
+        <%-# unconnected to the Post entity. Only when a new Comment is -%>
+        <%-# entered and submitted will it be linked to the Post entity via -%>
+        <%-# CommentsController#create(). Otherwise linking the Comment early -%>
+        <%-# would create an additional empty (mostly nil fields) Comment in -%>
+        <%-# the array of Comments linked to Post, causing error and headache -%>
+        <%= form_for Comment.new do |f| %>
           <div style="margin:0; padding: 0; display: inline"></div>
           <div class="control-group">
             <%= f.label "Leave a comment" %><br/>
@@ -31,9 +37,8 @@
 
         <h5>Comments:</h5>
 
-<% logger.debug("NGUYEN: #{@post.comments.count} comments") %>
-        <% @post.comments.each do |comment| %>
-          <%= render 'shared/comment', comment: comment %>
+        <% @post.comments.each do |c| %>
+          <%= render 'shared/comment', comment: c %>
         <% end %>
       </div>
     </div>

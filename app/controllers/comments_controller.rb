@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   def create
     # Create a new Comment
     @comment = current_post.comments.build(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
       # If save was successful, then redirect to the Post#show view, using
       # the post_id stored previously in the session variable
@@ -19,13 +20,18 @@ class CommentsController < ApplicationController
   end
 
   def vote
-    @comment = Comment.find(params[:comment_id])
+    logger.debug("NGUYEN, params: #{params.inspect}")
+    @comment = Comment.find(params[:id])
     if @comment
-      vote = @comment.comment_votes.build(user_id: current_user.id)
+      logger.debug("NGUYEN, found comment: #{@comment.inspect}")
+      vote = @comment.comment_votes.build(user_id: @comment.user_id)
       if vote.save
-        @post.vote_count += (params[:vote] == "true" ? 1 : -1)
-        @post.save
+        logger.debug("NGUYEN, saved vote: #{vote.inspect}")
+        @comment.vote_count += (params[:vote] == "true" ? 1 : -1)
+        @comment.save
       end
+    else
+      logger.debug("NGUYEN, comment NOT FOUND")
     end
     redirect_to(posts_path)
   end

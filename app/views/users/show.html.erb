@@ -1,24 +1,26 @@
-<p class="lead">Profile: <%= @user.username %></p>
+<% username = @user.username %>
+<p class="lead">Profile: <%= username %></p>
 <hr></hr>
 <p></p>
 <div class="well">
   <dl class="dl-horizontal">
     <dt>Username: </dt>
-    <dd><%= @user.username %></dd>
+    <dd><%= username %></dd>
     <dt>Timezone: </dt>
     <dd>Central Time (US & Canada)</dd>
   </dl>
 </div>
-<h5><%= @user.username %>'s Activity</h5>
+
+<h5><%= username %>'s Activity</h5>
 <ul class="nav nav-tabs">
   <li class="active">
-    <%= link_to "Posts (1)", "/users/#{@user.username}" %>
+    <%= link_to "Posts (1)", user_path(@user) %>
   </li>
   <li class="">
-    <%= link_to "Comments (0)", "/users/#{@user.username}?tab=comments" %>
+    <%= link_to "Comments (0)", "#{user_path(@user)}?tab=comments" %>
   </li>
 </ul>
 
-<% @posts.each do |post| %>
-  <%= render 'shared/post', post: post %>
+<% @posts.each do |p| %>
+  <%= render 'shared/post', post: p %>
 <% end %>

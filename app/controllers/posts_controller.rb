@@ -22,12 +22,11 @@ class PostsController < ApplicationController
   end
 
   def show
-    # Find by slug and not by id
-    @post = Post.find_by_slug(params[:id])
-    @comment = @post.comments.build
     # Save the id/slug of the Post, so the Post can be retrieved later from
     # inside a Comment
     session[:post_id] = params[:id]
+    # Find by slug and not by id
+    @post = Post.find_by_slug(params[:id])
   end
 
   def destroy

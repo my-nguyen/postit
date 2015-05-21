@@ -1,11 +1,13 @@
 <div class="row">
+  <%= render 'shared/comment_vote', comment: comment %>
 
   <div class="span8 well">
     <em>"<%= comment.body %>"</em>
     <br><br/>
     <span class="quiet">by</span>
-    <% username = comment.user_id.username %>
-    <%= link_to username, user_path(username) %>
+    <%-# look for User from within a Comment -%>
+    <% user = User.find(comment.user_id) %>
+    <%= link_to user.username, user_path(user) %>
     <small><%= "at #{comment.created_at}" %></small>
   </div>
 </div>

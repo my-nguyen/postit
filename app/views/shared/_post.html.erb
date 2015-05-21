@@ -9,14 +9,15 @@
 
     <p>
       <span class="quiet">posted by</span>
-      <% username = User.find(post.user_id).username %>
-      <%= link_to username, "/users/#{username}" %>
+      <%-# look for User from within a Post -%>
+      <% user = User.find(post.user_id) %>
+      <%= link_to user.username, user_path(user) %>
       <small>at <%= post.created_at %></small>
     </p>
 
     <small>
       <span>
-        <%= link_to "#{post.comments.count} comments", post_path(post.slug) %>
+        <%= link_to "#{post.comments.count} comments", post_path(post) %>
       </span>
     </small>
   </div>
