@@ -14,13 +14,19 @@
 <h5><%= username %>'s Activity</h5>
 <ul class="nav nav-tabs">
   <li class="active">
-    <%= link_to "Posts (1)", user_path(@user) %>
+    <%= link_to "Posts (#{@posts.count})", user_path(@user) %>
   </li>
   <li class="">
-    <%= link_to "Comments (0)", "#{user_path(@user)}?tab=comments" %>
+    <%= link_to "Comments (#{@comments.count})", "#{user_path(@user)}?tab=comments" %>
   </li>
 </ul>
 
-<% @posts.each do |p| %>
-  <%= render 'shared/post', post: p %>
+<% if params[:tab].nil? %>
+  <% @posts.each do |p| %>
+    <%= render 'shared/post', post: p %>
+  <% end %>
+<% else %>
+  <% @comments.each do |c| %>
+    <%= render 'shared/comment', comment: c %>
+  <% end %>
 <% end %>

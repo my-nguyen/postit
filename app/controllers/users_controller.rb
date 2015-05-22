@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:id])
     if @user
       @posts = @user.posts
+      @comments = Comment.where(user_id: "#{@user.id}")
     else
       render file: 'public/500.html'
     end
