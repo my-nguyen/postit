@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user, :current_post
+  around_filter :user_time_zone, if: :current_user
 
   private
   def current_user
@@ -19,5 +20,9 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     session[:user_id] = nil
+  end
+
+  def user_time_zone(&block)
+    Time.use_zone(current_user.time_zone, &block)
   end
 end
